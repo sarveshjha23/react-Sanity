@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Expense Tracker</h1>
+      <h1>Expense Tracker 1.0.0</h1>
 
       <NewExpense onFinalHandler={onFinalSave} />
 
