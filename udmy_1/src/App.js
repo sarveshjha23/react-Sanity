@@ -37,11 +37,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Lets Get Started</h1>
+      <h1>Expense Tracker</h1>
 
-      
       <NewExpense onFinalHandler={onFinalSave} />
-     
 
       <Expenses expenses={data} />
     </div>
