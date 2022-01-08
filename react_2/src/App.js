@@ -3,7 +3,10 @@ import { useState } from "react";
 import Form from "./components/Form/Form";
 import List from "./components/List/List";
 
-let mylist = [{ username: "Sarvesh ", age: 23 }];
+let mylist = [
+  { username: "Sarvesh Jha", age: 23 },
+  { username: "Parjat Jha", age: 24 },
+];
 
 function App() {
   const [list, setList] = useState(mylist);

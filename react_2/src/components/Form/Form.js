@@ -1,23 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+
 import Modal from "react-modal";
 
 function Form(props) {
-  const [user, setUser] = useState("");
-  const [age, setAge] = useState(0);
   const [err, setErr] = useState("");
   const [open, setOpen] = useState(false);
+  const userName = useRef();
+  const userAge = useRef();
 
   const onClickHandler = (event) => {
-    if (!user || !age) {
+    if (!userName.current.value.trim() || !userAge.current.value.trim()) {
       console.log("error");
       setOpen(true);
       setErr("Name and age cannot be blank");
-    } else if (age < 0) {
+    } else if (userAge.current.value < 0) {
       setOpen(true);
       setErr("Age cannot be negitive");
     } else {
       event.preventDefault();
-      props.bringState(user, age);
+      console.log(userAge);
+      props.bringState(userName.current.value, userAge.current.value);
+      userName.current.value = "";
+      userAge.current.value = "";
     }
   };
 
@@ -27,10 +31,8 @@ function Form(props) {
         <label className=" p-4 text-xl text-white">Username</label>
         <input
           type="text"
-          className="border-2 mb-3"
-          onChange={(event) => {
-            setUser(event.target.value);
-          }}
+          className="border-2 mb-3 w-44 rounded-lg"
+          ref={userName}
         />
       </div>
 
@@ -38,10 +40,10 @@ function Form(props) {
         <label className="p-4 text-xl text-white">Enter Age:</label>
         <input
           type="number"
-          className="border-2 mb-3 "
-          onChange={(event) => {
-            setAge(event.target.value);
-          }}
+          ref={userAge}
+          min={1}
+          max={100}
+          className="border-2 mb-3 w-44 rounded-lg"
         />
       </div>
       <div>
