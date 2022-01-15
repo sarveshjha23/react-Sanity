@@ -2,3 +2,4 @@ node_module/
 01-starting-project
 06-usereducer-starting-project
 dummy/
+*node_modules/*
