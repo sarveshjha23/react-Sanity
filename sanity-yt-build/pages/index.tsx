@@ -9,6 +9,7 @@ interface Props {
 }
 
 export default function Home({ posts }: Props) {
+  console.log(posts[0]);
   return (
     <div className="max-w-7xl mx-auto">
       <Head>
@@ -40,7 +41,6 @@ export default function Home({ posts }: Props) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-col-3 gap-3 md:gap-6 p-2 md:p-6">
         {posts.map((post) => {
-          console.log(post.slug.current);
           return (
             <Link key={post._id} href={`/post/${post.slug.current}`}>
               <div className="border-2 rounded-lg group cursor-pointer overflow-hidden">
